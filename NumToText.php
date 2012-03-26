@@ -20,6 +20,7 @@ class NumToText {
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
      * @param integer $int
+     * 
      * @return string
      */
     public function threeDigitsToWord($int){
@@ -37,6 +38,7 @@ class NumToText {
      *
      * @param integer $int
      * @param boolean $cent
+     * 
      * @return string
      */
     public function getCurrencyString($int, $cent = false) {
@@ -59,6 +61,7 @@ class NumToText {
      * 
      * @param integer $int
      * @param boolean $cents_as_number
+     * 
      * @return string
      */
     public function displayPrice($int, $cents_as_number = false) {
@@ -97,6 +100,7 @@ class NumToText_LV extends NumToText{
      *
      * @param integer $digit
      * @param suffix $suf
+     * 
      * @return string
      */
     public function digitToWord($digit, $suf = 0){
@@ -116,6 +120,7 @@ class NumToText_LV extends NumToText{
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
      * @param integer $int
+     * 
      * @return string
      */
     public function threeDigitsToWord($int){
@@ -138,6 +143,7 @@ class NumToText_LV extends NumToText{
      * Main method
      *
      * @param integer $int
+     * 
      * @return string
      */
     public function toWords($int){
@@ -166,6 +172,7 @@ class NumToText_LV extends NumToText{
      *
      * @param integer $int
      * @param boolean $cent
+     * 
      * @return string
      */
     public function getCurrencyString($int, $cent = false) {
@@ -200,6 +207,7 @@ class NumToText_RU extends NumToText{
      *
      * @param integer $digit
      * @param suffix $suf
+     * 
      * @return string
      */
     public function digitToWord($digit, $suf = 0){
@@ -221,6 +229,7 @@ class NumToText_RU extends NumToText{
      * Main method
      *
      * @param integer $int
+     * 
      * @return string
      */
     public function toWords($int){
@@ -251,6 +260,7 @@ class NumToText_RU extends NumToText{
      *
      * @param integer $int
      * @param boolean $cent
+     * 
      * @return string
      */
     public function getCurrencyString($int, $cent = false) {
@@ -284,6 +294,7 @@ class NumToText_EN extends NumToText{
      *
      * @param integer $digit
      * @param integer $suf
+     * 
      * @return string
      */
     public function digitToWord($digit, $suf = 0){
@@ -303,6 +314,7 @@ class NumToText_EN extends NumToText{
      * Main method
      *
      * @param integer $int
+     * 
      * @return string
      */
     public function toWords($int){
@@ -350,7 +362,9 @@ function NumToText($int, $lang = 'LV'){
  * Shorthand function to display price as text
  *
  * @param integer $int
+ * @param mixed $currencies
  * @param string $lang
+ * @param boolean $cents_as_number
  * 
  * @return string
  * @example echo PriceToText(123456.78, array(array('dollars', 'dollar'), array('cents', 'cent')), 'EN', true);

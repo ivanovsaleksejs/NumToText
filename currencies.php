@@ -6,7 +6,7 @@ $currencies = array(
             array('santīmi', 'santīms'),
         ),
         'USD' => array(
-            array('dollari', 'dollars'),
+            array('dolāri', 'dolārs'),
             array('centi', 'cents'),
         ),                    
         'EUR' => array(
