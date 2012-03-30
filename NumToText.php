@@ -5,7 +5,7 @@
  * Class NumToText
  * Converts integer numbers to text representation in English, Latvian or Russian. 
  * @author Aleksejs Ivanovs <ivanovs.aleksejs@gmail.com>
- * @version 0.9
+ * @version 1.0
  * 
  */
 class NumToText {
