@@ -91,8 +91,8 @@ class NumToText_LV extends NumToText{
     public
         $digits 	= array('', 'viens', 'divi', 'trīs', 'četri', 'pieci', 'seši', 'septiņi', 'astoņi', 'deviņi'),
         $suffix 	= array('', 'desmit ', 'simt ', 'padsmit ', ),
-        $exp    	= array('', ' tukstoši ', ' miljoni ', ' miljardi '),
-        $exp1   	= array('', ' tukstotis ', ' miljons ', ' miljards ');
+        $exp    	= array('', ' tūkstoši ', ' miljoni ', ' miljardi '),
+        $exp1   	= array('', ' tūkstotis ', ' miljons ', ' miljards ');
         
     /**
      * Converts single digit to text
