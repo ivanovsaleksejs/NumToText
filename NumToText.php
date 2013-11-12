@@ -10,6 +10,8 @@
  */
 class NumToText {
 
+	public $lang = false;
+
     public static $i;
 
     public 
@@ -80,19 +82,21 @@ class NumToText {
 }
 
 class NumToText_LV extends NumToText{
+
+	public $lang = 'LV';
     
     /**
      * @return instanceof self
      */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
             
     public
         $digits 	= array('', 'viens', 'divi', 'trīs', 'četri', 'pieci', 'seši', 'septiņi', 'astoņi', 'deviņi'),
         $suffix 	= array('', 'desmit ', 'simt ', 'padsmit ', ),
-        $exp    	= array('', ' tukstoši ', ' miljoni ', ' miljardi '),
-        $exp1   	= array('', ' tukstotis ', ' miljons ', ' miljards ');
+        $exp    	= array('', ' tūkstoši ', ' miljoni ', ' miljardi '),
+        $exp1   	= array('', ' tūkstotis ', ' miljons ', ' miljards ');
         
     /**
      * Converts single digit to text
@@ -184,11 +188,13 @@ class NumToText_LV extends NumToText{
 }
 
 class NumToText_RU extends NumToText{
+
+	public $lang = 'RU';
         
     /**
     * @return instanceof self
     */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
     
@@ -273,11 +279,13 @@ class NumToText_RU extends NumToText{
 }
 
 class NumToText_EN extends NumToText{
+
+	public $lang = 'EN';
     
     /**
      * @return instanceof self
      */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
     
