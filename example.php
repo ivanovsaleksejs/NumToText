@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td>Start time</td>
-                <td><?php=microtime(true)?></td>
+                <td><?php echo microtime(true)?></td>
             </tr>
             <?php
             for ($i=0; $i<1000; $i++){
@@ -60,9 +60,27 @@
                     . PriceToText($n, $curr, $langs[$index], true) . "</td></tr>";
             }
             ?>
+            <?php
+				$samples = array(
+					0,
+					1.0,
+					1.1,
+					13.37,
+				);
+				
+				foreach ($samples as $s){
+					for ($can = 0; $can < 2; $can++){
+						for ($dzc = 0; $dzc < 2; $dzc++){
+							echo '<tr><td>', ($can ? '' : '!'), 'cents_as_number; ',
+								($dzc ? '' : '!'), 'display_zero_cents</td><td>',
+								$s, '</td><td>', PriceToText($s, $currencies['LV']['EUR'], 'LV', $can, $dzc), '</td></tr>';
+						}
+					}
+				}
+			?>
             <tr>
                 <td>End time</td>
-                <td><?php=microtime(true)?></td>
+                <td><?php echo microtime(true)?></td>
             </tr>
         </table>
     </body>
