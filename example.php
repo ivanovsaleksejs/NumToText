@@ -5,7 +5,7 @@
     </head>
     <body>
         <table>
-            <?
+            <?php
             
             require_once('NumToText.php');
             require_once('currencies.php');
@@ -22,9 +22,9 @@
             </tr>
             <tr>
                 <td>Start time</td>
-                <td><?=microtime(true)?></td>
+                <td><?php=microtime(true)?></td>
             </tr>
-            <?
+            <?php
             for ($i=0; $i<1000; $i++){
                 
                 //Choose language
@@ -62,7 +62,7 @@
             ?>
             <tr>
                 <td>End time</td>
-                <td><?=microtime(true)?></td>
+                <td><?php=microtime(true)?></td>
             </tr>
         </table>
     </body>

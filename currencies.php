@@ -1,4 +1,4 @@
-<?
+<?php
 $currencies = array(
     'LV'    =>array(
         'LVL' => array(
