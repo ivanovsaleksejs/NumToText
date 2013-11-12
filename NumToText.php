@@ -17,6 +17,7 @@ class NumToText {
     public 
         $step		= 0,
         $zero   	= array('LV'=>'nulle','RU'=>'ноль', 'EN'=>'zero'),
+        $negative  	= array('LV'=>'mīnus','RU'=>'минус', 'EN'=>'minus'),
         $currency   = array();    
     /**
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
@@ -67,7 +68,8 @@ class NumToText {
      * @return string
      */
     public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false) {
-        return $this->toWords((int)abs($int)) 
+        return ($int < 0 ? $this->negative[$this->lang].' ' : '')
+			.$this->toWords((int)abs($int)) 
             . " " . $this->getCurrencyString((int)abs($int)) . 
             (($int == floor($int) and !$display_zero_cents)
                 ? '' 
