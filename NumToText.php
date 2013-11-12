@@ -17,6 +17,7 @@ class NumToText {
     public 
         $step		= 0,
         $zero   	= array('LV'=>'nulle','RU'=>'ноль', 'EN'=>'zero'),
+        $negative  	= array('LV'=>'mīnus','RU'=>'минус', 'EN'=>'minus'),
         $currency   = array();    
     /**
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
@@ -67,7 +68,8 @@ class NumToText {
      * @return string
      */
     public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false) {
-        return $this->toWords((int)abs($int)) 
+        return ($int < 0 ? $this->negative[$this->lang].' ' : '')
+			.$this->toWords((int)abs($int)) 
             . " " . $this->getCurrencyString((int)abs($int)) . 
             (($int == floor($int) and !$display_zero_cents)
                 ? '' 
@@ -151,6 +153,9 @@ class NumToText_LV extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
         $this->step = 0;
         $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -167,7 +172,7 @@ class NumToText_LV extends NumToText{
             $this->step++;
         }
         
-        return $return;
+        return $sign.$return;
     
     }
 
@@ -239,6 +244,9 @@ class NumToText_RU extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
         $this->step = 0;
         $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -257,7 +265,7 @@ class NumToText_RU extends NumToText{
             $this->step++;
         }
         
-        return $return;
+        return $sign.$return;
         
     }
 
@@ -326,6 +334,9 @@ class NumToText_EN extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
 	    $this->step = 0;
 	    $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -338,7 +349,7 @@ class NumToText_EN extends NumToText{
 	        $this->step++;
 	    }
 	    
-	    return $return;
+	    return $sign.$return;
     	
     }    
         
@@ -361,7 +372,7 @@ function NumToText($int, $lang = 'LV'){
     return 
         class_exists($name)
         ? call_user_func_array(array($name, '__i'), array())
-            ->toWords((int)abs($int))
+            ->toWords((int)$int)
         : false;
     	
 }
