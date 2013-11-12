@@ -38,7 +38,7 @@ $currencies = array(
             array('cents', 'cent'),
         ),                    
         'EUR' => array(
-            array('euro', 'euro'),
+            array('euros', 'euro'),
             array('cents', 'cent'),
         ),
     )     
