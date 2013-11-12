@@ -153,6 +153,9 @@ class NumToText_LV extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
         $this->step = 0;
         $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -169,7 +172,7 @@ class NumToText_LV extends NumToText{
             $this->step++;
         }
         
-        return $return;
+        return $sign.$return;
     
     }
 
@@ -241,6 +244,9 @@ class NumToText_RU extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
         $this->step = 0;
         $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -259,7 +265,7 @@ class NumToText_RU extends NumToText{
             $this->step++;
         }
         
-        return $return;
+        return $sign.$return;
         
     }
 
@@ -328,6 +334,9 @@ class NumToText_EN extends NumToText{
      * @return string
      */
     public function toWords($int){
+    
+		$sign = $int < 0 ? $this->negative[$this->lang].' ' : '';
+		$int = abs($int);
         
 	    $this->step = 0;
 	    $return = $int == 0 ? $this->zero[$this->lang] : '';
@@ -340,7 +349,7 @@ class NumToText_EN extends NumToText{
 	        $this->step++;
 	    }
 	    
-	    return $return;
+	    return $sign.$return;
     	
     }    
         
@@ -363,7 +372,7 @@ function NumToText($int, $lang = 'LV'){
     return 
         class_exists($name)
         ? call_user_func_array(array($name, '__i'), array())
-            ->toWords((int)abs($int))
+            ->toWords((int)$int)
         : false;
     	
 }

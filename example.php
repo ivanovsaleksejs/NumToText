@@ -58,6 +58,12 @@
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
                     . NumToText($n, $langs[$index]) . "</td><td>"
                     . PriceToText($n, $curr, $langs[$index], true) . "</td></tr>";
+                    
+				// Negative
+                $n = -mt_rand(0, 1000) + mt_rand(0, 100)/100;
+                echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
+                    . NumToText($n, $langs[$index]) . "</td><td>"
+                    . PriceToText($n, $curr, $langs[$index]) . "</td></tr>";
             }
             ?>
             <?php
