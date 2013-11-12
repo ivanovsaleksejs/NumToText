@@ -10,6 +10,8 @@
  */
 class NumToText {
 
+	public $lang = false;
+
     public static $i;
 
     public 
@@ -80,6 +82,8 @@ class NumToText {
 }
 
 class NumToText_LV extends NumToText{
+
+	public $lang = 'LV';
     
     /**
      * @return instanceof self
@@ -184,6 +188,8 @@ class NumToText_LV extends NumToText{
 }
 
 class NumToText_RU extends NumToText{
+
+	public $lang = 'RU';
         
     /**
     * @return instanceof self
@@ -273,6 +279,8 @@ class NumToText_RU extends NumToText{
 }
 
 class NumToText_EN extends NumToText{
+
+	public $lang = 'EN';
     
     /**
      * @return instanceof self
