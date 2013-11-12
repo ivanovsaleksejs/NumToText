@@ -84,7 +84,7 @@ class NumToText_LV extends NumToText{
     /**
      * @return instanceof self
      */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
             
@@ -188,7 +188,7 @@ class NumToText_RU extends NumToText{
     /**
     * @return instanceof self
     */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
     
@@ -277,7 +277,7 @@ class NumToText_EN extends NumToText{
     /**
      * @return instanceof self
      */
-    public function __i(){
+    public static function __i(){
         return (!self::$i instanceof self) ? (self::$i = new self) : self::$i;
     }
     
