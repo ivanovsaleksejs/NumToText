@@ -66,10 +66,10 @@ class NumToText {
      * 
      * @return string
      */
-    public function displayPrice($int, $cents_as_number = false) {
+    public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false) {
         return $this->toWords((int)abs($int)) 
             . " " . $this->getCurrencyString((int)abs($int)) . 
-            ($int == floor($int) 
+            (($int == floor($int) and !$display_zero_cents)
                 ? '' 
                 :  
                     " " . ($cents_as_number ? (int)(($int*100 - floor($int)*100)) : $this->toWords((int)(($int*100 - floor($int)*100)))) . 
@@ -380,7 +380,7 @@ function NumToText($int, $lang = 'LV'){
  * @example echo PriceToText(123456.78, array(array('dollars', 'dollar'), array('cents', 'cent')), 'EN');
  * Echoes 'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents'
  */
-function PriceToText($int, $currencies, $lang = 'LV', $cents_as_number = false) {
+function PriceToText($int, $currencies, $lang = 'LV', $cents_as_number = false, $display_zero_cents = false) {
 
     $name = 'NumToText_' . $lang;
     
@@ -390,6 +390,6 @@ function PriceToText($int, $currencies, $lang = 'LV', $cents_as_number = false) 
     return 
         class_exists($name)
         ? call_user_func_array(array($name, '__i'), array())
-            ->displayPrice($int, $cents_as_number)
+            ->displayPrice($int, $cents_as_number, $display_zero_cents)
         : false;
 }
