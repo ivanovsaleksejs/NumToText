@@ -68,14 +68,18 @@ class NumToText {
      * @return string
      */
     public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false) {
+
+        $part_int = (int)abs($int);
+        $part_decimal = (int)((abs($int)*100 - floor(abs($int))*100));
+
         return ($int < 0 ? $this->negative[$this->lang].' ' : '')
-			.$this->toWords((int)abs($int)) 
-            . " " . $this->getCurrencyString((int)abs($int)) . 
+			.$this->toWords($part_int)
+            . " " . $this->getCurrencyString($part_int) .
             (($int == floor($int) and !$display_zero_cents)
                 ? '' 
                 :  
-                    " " . ($cents_as_number ? (int)(($int*100 - floor($int)*100)) : $this->toWords((int)(($int*100 - floor($int)*100)))) . 
-                    " " . $this->getCurrencyString((int)(($int*100 - floor($int)*100)), true)
+                    " " . ($cents_as_number ? $part_decimal : $this->toWords($part_decimal)) .
+                    " " . $this->getCurrencyString($part_decimal, true)
             );            
     }
 
