@@ -70,7 +70,7 @@ class NumToText {
     public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false) {
 
         $part_int = (int)abs($int);
-        $part_decimal = (int)((abs($int)*100 - floor(abs($int))*100));
+        $part_decimal = (int)round(((abs($int) * 100 - floor(abs($int)) * 100)));
 
         return ($int < 0 ? $this->negative[$this->lang].' ' : '')
 			.$this->toWords($part_int)
