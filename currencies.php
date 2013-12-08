@@ -1,4 +1,5 @@
 <?php
+
 $currencies = array(
     'LV'    =>array(
         'LVL' => array(
@@ -8,7 +9,7 @@ $currencies = array(
         'USD' => array(
             array('dolāri', 'dolārs'),
             array('centi', 'cents'),
-        ),                    
+        ),
         'EUR' => array(
             array('eiro', 'eiro'),
             array('centi', 'cents'),
@@ -22,7 +23,7 @@ $currencies = array(
         'USD' => array(
             array('долларов', 'доллар', 'доллара'),
             array('центов', 'цент', 'цента'),
-        ),                    
+        ),
         'EUR' => array(
             array('евро', 'евро', 'евро'),
             array('центов', 'цент', 'цента'),
@@ -36,11 +37,10 @@ $currencies = array(
         'USD' => array(
             array('dollars', 'dollar'),
             array('cents', 'cent'),
-        ),                    
+        ),
         'EUR' => array(
             array('euros', 'euro'),
             array('cents', 'cent'),
         ),
-    )     
+    )
 );
-
