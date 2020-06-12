@@ -1,6 +1,12 @@
-<?
+<?php
 
 ini_set('display_errors', -1);
+
+use ivanovsaleksejs\NumToText\Num;
+use ivanovsaleksejs\NumToText\Price;
+
+include __DIR__ . '/vendor/autoload.php';
+
 ?>
 <html>
 
@@ -10,9 +16,8 @@ ini_set('display_errors', -1);
     <body>
         <table>
             <?php
-            
-            require_once('NumToText.php');
-            require_once('currencies.php');
+
+            $currencies = require __DIR__ . '/currencies.php';
             
             $langs = array('LV', 'RU', 'EN');
             $lang_count = count($langs);            
@@ -42,32 +47,32 @@ ini_set('display_errors', -1);
                 //Number from 0 to 1000
                 $n = mt_rand(0, 1000) + mt_rand(0, 100)/100;
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
-                    . NumToText($n, $langs[$index]) . "</td><td>"
-                    . PriceToText($n, $curr, $langs[$index]) . "</td></tr>";
+                    . Num::toText($n, $langs[$index]) . "</td><td>"
+                    . Price::toText($n, $curr, $langs[$index]) . "</td></tr>";
                 
                 //Number from 1000 to 1000000
                 $n = mt_rand(1000, 1000000) + mt_rand(0, 100)/100;
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
-                    . NumToText($n, $langs[$index]) . "</td><td>"
-                    . PriceToText($n, $curr, $langs[$index], true) . "</td></tr>";
+                    . Num::toText($n, $langs[$index]) . "</td><td>"
+                    . Price::toText($n, $curr, $langs[$index], true) . "</td></tr>";
 
                 //Number from 1000000 to 1000000000    
                 $n = mt_rand(1000000, 1000000000) + mt_rand(0, 100)/100;
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
-                    . NumToText($n, $langs[$index]) . "</td><td>"
-                    . PriceToText($n, $curr, $langs[$index]) . "</td></tr>";
+                    . Num::toText($n, $langs[$index]) . "</td><td>"
+                    . Price::toText($n, $curr, $langs[$index]) . "</td></tr>";
 
                 //Additional test for billions
                 $n = mt_rand(2000100000, 2010000000) + mt_rand(0, 100)/100;
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
-                    . NumToText($n, $langs[$index]) . "</td><td>"
-                    . PriceToText($n, $curr, $langs[$index], true) . "</td></tr>";
+                    . Num::toText($n, $langs[$index]) . "</td><td>"
+                    . Price::toText($n, $curr, $langs[$index], true) . "</td></tr>";
                     
 				// Negative
                 $n = -mt_rand(0, 1000) + mt_rand(0, 100)/100;
                 echo "<tr><td>$i ".$langs[$index]."</td><td>$n</td><td>" 
-                    . NumToText($n, $langs[$index]) . "</td><td>"
-                    . PriceToText($n, $curr, $langs[$index]) . "</td></tr>";
+                    . Num::toText($n, $langs[$index]) . "</td><td>"
+                    . Price::toText($n, $curr, $langs[$index]) . "</td></tr>";
             }
             ?>
             <?php
@@ -83,7 +88,7 @@ ini_set('display_errors', -1);
 						for ($dzc = 0; $dzc < 2; $dzc++){
 							echo '<tr><td>', ($can ? '' : '!'), 'cents_as_number; ',
 								($dzc ? '' : '!'), 'display_zero_cents</td><td>',
-								$s, '</td><td>', PriceToText($s, $currencies['LV']['EUR'], 'LV', $can, $dzc), '</td></tr>';
+								$s, '</td><td>', Price::toText($s, $currencies['LV']['EUR'], 'LV', $can, $dzc), '</td></tr>';
 						}
 					}
 				}

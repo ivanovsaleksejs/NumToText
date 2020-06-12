@@ -1,6 +1,6 @@
 <?php
 
-$currencies = array(
+return array(
     'LV'    =>array(
         'LVL' => array(
             array('lati', 'lats'),
