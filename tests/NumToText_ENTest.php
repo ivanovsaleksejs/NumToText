@@ -25,5 +25,9 @@ final class TIClientTest extends TestCase
             'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
             $instance->displayPrice(123456.78)
         );
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fourteen dollars seventy eight cents',
+            $instance->displayPrice(123414.78)
+        );
     }
 }
