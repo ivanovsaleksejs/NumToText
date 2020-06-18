@@ -82,12 +82,12 @@ abstract class NumToText
         $part_decimal = (int) round(abs($int) * 100 - floor(abs($int)) * 100);
 
         return ($int < 0 ? $this->negative . ' ' : '')
-            . rtrim($this->toWords($part_int))
+            . trim($this->toWords($part_int))
             . " " . $this->getCurrencyString($part_int) .
             (($int == floor($int) and !$display_zero_cents)
                 ? ''
                 :
-                " " . ($cents_as_number ? $part_decimal : $this->toWords($part_decimal)) .
+                " " . ($cents_as_number ? $part_decimal : trim($this->toWords($part_decimal))) .
                 " " . $this->getCurrencyString($part_decimal, true));
     }
 
