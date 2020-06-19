@@ -17,6 +17,10 @@
         {
             "name": "Denis Mosolov",
             "email": "denismosolov@gmail.com"
+        },
+        {
+            "name": "Viesturs Kavacs",
+            "email": "kavackys@gmail.com"
         }
     ],
     "autoload": {
