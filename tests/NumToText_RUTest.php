@@ -14,6 +14,10 @@ final class NumToText_RUTest extends TestCase
         $instance->setCurrency($currencies['RU']['USD']);
 
         $this->assertEqualsIgnoringCase(
+            'восемьсот сорок один миллион двести восемьдесят четыре тысячи пятьсот сорок восемь',
+            $instance->toWords(841284548)
+        );
+        $this->assertEqualsIgnoringCase(
             'четырнадцать долларов четыре цента',
             $instance->displayPrice(14.04)
         );

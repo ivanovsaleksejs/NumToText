@@ -64,7 +64,7 @@ class NumToText_RU extends NumToText
     public function toWords($int)
     {
 
-        $sign = $int < 0 ? $this->negative . ' ' : '';
+        $sign = $int < 0 ? ($this->negative . ' ') : '';
         $int = abs($int);
 
         $this->step = 0;

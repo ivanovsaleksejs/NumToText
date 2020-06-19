@@ -32,14 +32,15 @@ abstract class NumToText
         $div100 = $int / 100;
         $mod100 = $int % 100;
 
-        return
-            $this->digitToWord(floor($div100), 2) .
+        $returnString = $this->digitToWord(floor($div100), 2) .
 
             ($mod100 > 9 && $mod100 < 20
                 // 10, 11, .. 19
                 ? $this->teens[$mod100 - 10]
                 //any other number
                 : $this->digitToWord(floor($mod100 / 10), 1) . $this->digitToWord($int % 10));
+
+        return trim($returnString);
     }
 
     /**
