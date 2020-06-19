@@ -13,6 +13,10 @@
         {
             "name": "Aleksejs Ivanovs",
             "email": "ivanovs.aleksejs@gmail.com"
+        },
+        {
+            "name": "Denis Mosolov",
+            "email": "denismosolov@gmail.com"
         }
     ],
     "autoload": {
