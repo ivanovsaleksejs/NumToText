@@ -30,4 +30,13 @@ final class TIClientTest extends TestCase
             $instance->displayPrice(123414.78)
         );
     }
+
+    public function testPrice(): void
+    {
+        $price = Price::toText(120.5, [['dollars', 'dollar'], ['cents', 'cent']], 'EN');
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty dollars fifty cents',
+            $price
+        );
+    }
 }

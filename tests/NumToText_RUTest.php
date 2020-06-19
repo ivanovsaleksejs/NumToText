@@ -18,4 +18,13 @@ final class NumToText_RUTest extends TestCase
             $instance->displayPrice(14.04)
         );
     }
+
+    public function testPrice(): void
+    {
+        $price = Price::toText(120.5, [['рублей', 'рубль', 'рубля'], ['копеек', 'копейка', 'копейки']], 'RU');
+        $this->assertEqualsIgnoringCase(
+            'сто двадцать рублей пятьдесят копеек',
+            $price
+        );
+    }
 }
