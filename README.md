@@ -1,7 +1,5 @@
 # NumToText
 
-======
-
 Converts numbers or prices to text representation in various languages.
 
 ### Supported languages
