@@ -1,6 +1,6 @@
 {
     "name": "ivanovsaleksejs/num-to-text",
-    "description": "Converts numbers to text representation in various languges.",
+    "description": "Converts numbers or prices to text representation in various languges. For example, 437605 becomes \"four hundred thirty seven thousand six hundred five\". Price class for displaying prices with currencies is also available.",
     "keywords": [
       "php",
       "english",
