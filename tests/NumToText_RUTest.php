@@ -31,4 +31,31 @@ final class NumToText_RUTest extends TestCase
             $price
         );
     }
+
+    public function testGender(): void
+    {
+        $price = Price::toText(1.01, [['рублей', 'рубль', 'рубля'], ['копеек', 'копейка', 'копейки']], 'RU', false, false, [0, 1]);
+        $this->assertEqualsIgnoringCase(
+            'один рубль одна копейка',
+            $price
+        );
+
+        $price = Price::toText(1.02, [['рублей', 'рубль', 'рубля'], ['копеек', 'копейка', 'копейки']], 'RU', false, false, [0, 1]);
+        $this->assertEqualsIgnoringCase(
+            'один рубль две копейки',
+            $price
+        );
+
+        $price = Price::toText(1.01, [['песо', 'песо', 'песо'], ['центаво', 'центаво', 'центаво']], 'RU', false, false, [2, 2]);
+        $this->assertEqualsIgnoringCase(
+            'одно песо одно центаво',
+            $price
+        );
+
+        $price = Price::toText(1.02, [['песо', 'песо', 'песо'], ['центаво', 'центаво', 'центаво']], 'RU', false, false, [2, 2]);
+        $this->assertEqualsIgnoringCase(
+            'одно песо два центаво',
+            $price
+        );
+    }
 }

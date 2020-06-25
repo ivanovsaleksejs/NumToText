@@ -11,7 +11,7 @@ class NumToText_RU extends NumToText
     public $negative   = 'минус';
     public $zero       = 'ноль';
 
-    public $digits     = array('', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'одна', 'две');
+    public $digits     = array('', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'одна', 'две', 'одно');
     public $tens       = array('', 'десять ', 'двадцать ', 'тридцать ', 'сорок ', 'пятьдесят ', 'шестьдесят ', 'семьдесят ', 'восемьдесят ', 'девяносто ');
     public $teens      = array('десять ', 'одиннадцать ', 'двенадцать ', 'тринадцать ', 'четырнадцать ', 'пятнадцать ', 'шестнадцать ', ' семнадцать ', 'восемнадцать ', 'девятнадцать ');
     public $hundreds   = array('', ' сто ', ' двести ', ' триста ', ' четыреста ', ' пятьсот ', ' шестьсот ', ' семьсот ', ' восемьсот ', ' девятьсот ');
@@ -36,11 +36,12 @@ class NumToText_RU extends NumToText
      * $suf is the parameter that shows if digit is tens, hundreds etc
      *
      * @param integer $digit
-     * @param suffix $suf
+     * @param integer $suf
+     * @param integer $gender
      *
      * @return string
      */
-    public function digitToWord($digit, $suf = 0)
+    public function digitToWord($digit, $suf = 0, $gender = 0)
     {
 
         return $digit > 0
@@ -48,9 +49,14 @@ class NumToText_RU extends NumToText
             ? $this->hundreds[$digit]
             : ($suf == 1
                 ? $this->tens[$digit]
-                : (($digit == 1 || $digit == 2) && $this->step == 1
+                : (($digit == 1 || $digit == 2) && ($this->step == 1 || ($this->step == 0 && $gender == 1))
                     ? $this->digits[$digit + 9]
-                    : $this->digits[$digit]))
+                    : ($digit == 1 && $this->step == 0 && $gender == 2
+                        ? $this->digits[12]
+                        : $this->digits[$digit]
+                    )
+                )
+            )
             : '';
     }
 
@@ -58,10 +64,11 @@ class NumToText_RU extends NumToText
      * Main method
      *
      * @param integer $int
+     * @param integer $gender
      *
      * @return string
      */
-    public function toWords($int)
+    public function toWords($int, $gender = 0)
     {
 
         $sign = $int < 0 ? ($this->negative . ' ') : '';
@@ -80,7 +87,7 @@ class NumToText_RU extends NumToText
             $exp = $mod10 == 1 && ($mod100 < 11 || $mod100 > 19) ? $this->exp1[$this->step] : $exp;
 
             $return = ($three >= 1
-                ? $this->threeDigitsToWord($three) . $exp
+                ? $this->threeDigitsToWord($three, $gender) . $exp
                 : '')
                 . $return;
             $this->step++;

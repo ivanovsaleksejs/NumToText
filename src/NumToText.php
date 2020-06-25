@@ -23,10 +23,11 @@ abstract class NumToText
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
      * @param integer $int
+     * @param integer $gender
      *
      * @return string
      */
-    public function threeDigitsToWord($int)
+    public function threeDigitsToWord($int, $gender = 0)
     {
 
         $div100 = $int / 100;
@@ -38,7 +39,7 @@ abstract class NumToText
                 // 10, 11, .. 19
                 ? $this->teens[$mod100 - 10]
                 //any other number
-                : $this->digitToWord(floor($mod100 / 10), 1) . $this->digitToWord($int % 10));
+                : $this->digitToWord(floor($mod100 / 10), 1) . $this->digitToWord($int % 10, 0, $gender));
 
         return trim($returnString);
     }
@@ -75,20 +76,18 @@ abstract class NumToText
      *
      * @return string
      */
-    public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false)
+    public function displayPrice($int, $cents_as_number = false, $display_zero_cents = false, $genders = [])
     {
-
-
         $part_int = (int) abs($int);
         $part_decimal = (int) round(abs($int) * 100 - floor(abs($int)) * 100);
 
         return ($int < 0 ? $this->negative . ' ' : '')
-            . trim($this->toWords($part_int))
+            . trim($this->toWords($part_int, $genders[0] ?? 0))
             . " " . $this->getCurrencyString($part_int) .
             (($int == floor($int) and !$display_zero_cents)
                 ? ''
                 :
-                " " . ($cents_as_number ? $part_decimal : trim($this->toWords($part_decimal))) .
+                " " . ($cents_as_number ? $part_decimal : trim($this->toWords($part_decimal, $genders[1] ?? 0))) .
                 " " . $this->getCurrencyString($part_decimal, true));
     }
 
@@ -98,17 +97,19 @@ abstract class NumToText
      *
      * @param integer $digit
      * @param integer $suf
+     * @param integer $gender
      *
      * @return string
      */
-    abstract public function digitToWord($digit, $suf = 0);
+    abstract public function digitToWord($digit, $suf = 0, $gender = 0);
 
     /**
      * Main method
      *
      * @param integer $int
+     * @param indeger $gender
      *
      * @return string
      */
-    abstract public function toWords($int);
+    abstract public function toWords($int, $gender = 0);
 }

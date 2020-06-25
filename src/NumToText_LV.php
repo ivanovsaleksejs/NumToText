@@ -30,10 +30,11 @@ class NumToText_LV extends NumToText
      *
      * @param integer $digit
      * @param suffix $suf
+     * @param integer $gender
      *
      * @return string
      */
-    public function digitToWord($digit, $suf = 0)
+    public function digitToWord($digit, $suf = 0, $gender = 0)
     {
 
         return $digit > 0
@@ -74,10 +75,11 @@ class NumToText_LV extends NumToText
      * Main method
      *
      * @param integer $int
+     * @param indeger $gender
      *
      * @return string
      */
-    public function toWords($int)
+    public function toWords($int, $gender = 0)
     {
 
         $sign = $int < 0 ? $this->negative . ' ' : '';
