@@ -39,4 +39,61 @@ final class TIClientTest extends TestCase
             $price
         );
     }
+
+    public function testGenderHasNoMattter(): void
+    {
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [0, 0]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [0, 1]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [1, 0]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [1, 1]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [1, 2]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [2, 1]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [2, 2]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [2, 0]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+
+        $price = Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN', false, false, [0, 2]);
+        $this->assertEqualsIgnoringCase(
+            'one hundred twenty three thousand four hundred fifty six dollars seventy eight cents',
+            $price
+        );
+    }
 }
