@@ -20,7 +20,7 @@ class NumToText_RU extends NumToText
     public $exp2       = array('', ' тысячи ', ' миллиона ', ' миллиарда ');
 
     /**
-     * @return instanceof self
+     * @return NumToText_RU instanceof self
      */
     public static function __i()
     {
@@ -35,9 +35,9 @@ class NumToText_RU extends NumToText
      * Converts single digit to text
      * $suf is the parameter that shows if digit is tens, hundreds etc
      *
-     * @param integer $digit
-     * @param integer $suf
-     * @param integer $gender
+     * @param int $digit
+     * @param int $suf
+     * @param int $gender
      *
      * @return string
      */
@@ -63,8 +63,8 @@ class NumToText_RU extends NumToText
     /**
      * Main method
      *
-     * @param integer $int
-     * @param integer $gender
+     * @param int $int
+     * @param int $gender
      *
      * @return string
      */
@@ -99,8 +99,8 @@ class NumToText_RU extends NumToText
     /**
      * Returns currency string
      *
-     * @param integer $int
-     * @param boolean $cent
+     * @param int $int
+     * @param bool $cent
      *
      * @return string
      */

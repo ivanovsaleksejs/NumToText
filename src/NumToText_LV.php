@@ -17,7 +17,7 @@ class NumToText_LV extends NumToText
     public $exp1       = array('', ' tūkstotis ', ' miljons ', ' miljards ');
 
     /**
-     * @return instanceof self
+     * @return NumToText_LV instanceof self
      */
     public static function __i()
     {
@@ -28,9 +28,9 @@ class NumToText_LV extends NumToText
      * Converts single digit to text
      * $suf is the parameter that shows if digit is tens, hundreds etc
      *
-     * @param integer $digit
-     * @param suffix $suf
-     * @param integer $gender
+     * @param int $digit
+     * @param int $suf
+     * @param int $gender
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class NumToText_LV extends NumToText
     /**
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
-     * @param integer $int
+     * @param int $int
      *
      * @return string
      */
@@ -74,8 +74,8 @@ class NumToText_LV extends NumToText
     /**
      * Main method
      *
-     * @param integer $int
-     * @param indeger $gender
+     * @param int $int
+     * @param int $gender
      *
      * @return string
      */
@@ -105,8 +105,8 @@ class NumToText_LV extends NumToText
     /**
      * Returns currency string
      *
-     * @param integer $int
-     * @param boolean $cent
+     * @param int $int
+     * @param bool $cent
      *
      * @return string
      */

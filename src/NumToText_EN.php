@@ -17,7 +17,7 @@ class NumToText_EN extends NumToText
     public $exp        = array('', ' thousand ', ' million ', ' billion ');
 
     /**
-     * @return instanceof self
+     * @return NumToText_EN instanceof self
      */
     public static function __i()
     {
@@ -28,9 +28,9 @@ class NumToText_EN extends NumToText
      * Converts single digit to text
      * $suf is the parameter that shows if digit is tens, hundreds etc
      *
-     * @param integer $digit
-     * @param integer $suf
-     * @param integer $gender
+     * @param int $digit
+     * @param int $suf
+     * @param int $gender
      *
      * @return string
      */
@@ -49,8 +49,8 @@ class NumToText_EN extends NumToText
     /**
      * Main method
      *
-     * @param integer $int
-     * @param indeger $gender
+     * @param int $int
+     * @param int $gender
      *
      * @return string
      */
