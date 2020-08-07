@@ -22,8 +22,8 @@ abstract class NumToText
     /**
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
-     * @param integer $int
-     * @param integer $gender
+     * @param int $int
+     * @param int $gender
      *
      * @return string
      */
@@ -47,8 +47,8 @@ abstract class NumToText
     /**
      * Returns currency string
      *
-     * @param integer $int
-     * @param boolean $cent
+     * @param int $int
+     * @param bool $cent
      *
      * @return string
      */
@@ -71,8 +71,10 @@ abstract class NumToText
     /**
      * Returns price as text
      *
-     * @param integer $int
-     * @param boolean $cents_as_number
+     * @param  int  $int
+     * @param  bool  $cents_as_number
+     * @param  bool  $display_zero_cents
+     * @param  array  $genders
      *
      * @return string
      */
@@ -95,9 +97,9 @@ abstract class NumToText
      * Converts single digit to text
      * $suf is the parameter that shows if digit is tens, hundreds etc
      *
-     * @param integer $digit
-     * @param integer $suf
-     * @param integer $gender
+     * @param int $digit
+     * @param int $suf
+     * @param int $gender
      *
      * @return string
      */
@@ -106,8 +108,8 @@ abstract class NumToText
     /**
      * Main method
      *
-     * @param integer $int
-     * @param indeger $gender
+     * @param int $int
+     * @param int $gender
      *
      * @return string
      */
