@@ -2,8 +2,6 @@
 
 namespace ivanovsaleksejs\NumToText;
 
-use ivanovsaleksejs\NumToText\NumToText;
-
 class NumToText_EN extends NumToText
 {
 
