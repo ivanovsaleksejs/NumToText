@@ -48,10 +48,11 @@ class NumToText_LV extends NumToText
      * Converts 3-digit portions (like thousands, millions etc) of number to a text
      *
      * @param int $int
+     * @param int $gender
      *
      * @return string
      */
-    public function threeDigitsToWord($int)
+    public function threeDigitsToWord($int, $gender = 0)
     {
 
         $div100 = $int / 100;
@@ -66,7 +67,7 @@ class NumToText_LV extends NumToText
                     ? $this->digits[$mod100 % 10]
                     : mb_substr($this->digits[$mod100 % 10], 0, -1)) . $this->suffix[3]
                 //any other number
-                : $this->digitToWord(floor($mod100 / 10), 1) . $this->digitToWord($int % 10));
+                : $this->digitToWord(floor($mod100 / 10), 1, $gender) . $this->digitToWord($int % 10, 0, $gender));
     }
 
     /**
