@@ -53,7 +53,7 @@ echo Price::toText(123456.78, [['dollars', 'dollar'], ['cents', 'cent']], 'EN') 
 
 
 echo Price::toText(1.02, [['рублей', 'рубль', 'рубля'], ['копеек', 'копейка', 'копейки']], 'RU', false, false, [0, 1]); . "\n";
-// Echoes 'один рубль одна копейка'
+// Echoes 'один рубль две копейки'
 // Please note, the sixth parameter specifies the gender for the integer and decimal parts of the number respectively
 // 0 - masculine
 // 1 - feminine
