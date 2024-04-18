@@ -55,7 +55,7 @@ class NumToText_EN extends NumToText
     public function toWords($int, $gender = 0)
     {
 
-        if (!isset($this->hundreds)) {
+        if (!$this->hundreds) {
             $this->hundreds = $this->digits;
             array_walk($this->hundreds, function (&$val, $key) {
                 $val .= ' hundred ';
@@ -68,7 +68,7 @@ class NumToText_EN extends NumToText
         $this->step = 0;
         $return = $int == 0 ? $this->zero : '';
 
-        while (($three = $int % 1000) || ($int >= 1)) {
+        while (($three = (int)$int % 1000) || ($int >= 1)) {
             $int /= 1000;
             $return = ($three >= 1
                 ? $this->threeDigitsToWord($three) . $this->exp[$this->step]

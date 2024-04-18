@@ -15,6 +15,8 @@ abstract class NumToText
 
     public static $i;
 
+    public $hundreds;
+
     public
         $lang       = false,
         $step       = 0,

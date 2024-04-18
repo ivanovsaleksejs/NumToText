@@ -75,7 +75,7 @@ class NumToText_RU extends NumToText
         $this->step = 0;
         $return = $int == 0 ? $this->zero : '';
 
-        while (($three = $int % 1000) || ($int >= 1)) {
+        while (($three = (int)$int % 1000) || ($int >= 1)) {
             $int /= 1000;
 
             $mod10 = $three % 10;
